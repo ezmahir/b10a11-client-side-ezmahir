@@ -3,6 +3,8 @@ import MainLayout from "../layout/MainLayout";
 import Home from "../pages/Home/Home";
 import Login from "../pages/Login/Login";
 import Register from "../pages/Register/Register";
+import ArtifactDetails from "../pages/ArtifactDetails/ArtifactDetails";
+import AddArtifacts from "../pages/AddArtifacts/AddArtifacts";
 
 const router = createBrowserRouter([
   {
@@ -15,12 +17,23 @@ const router = createBrowserRouter([
         element: <Home></Home>,
       },
       {
+        path: "/register",
+        element: <Register></Register>,
+      },
+      {
         path: "/login",
         element: <Login></Login>,
       },
       {
-        path: "/register",
-        element: <Register></Register>,
+        path: "/artifacts/:id",
+        element: <ArtifactDetails></ArtifactDetails>,
+        loader: ({ params }) =>
+          fetch(`http://localhost:5000/artifacts/${params.id}`),
+      },
+
+      {
+        path: "/addArtifacts",
+        element: <AddArtifacts></AddArtifacts>,
       },
     ],
   },

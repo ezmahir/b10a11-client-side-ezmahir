@@ -2,6 +2,7 @@ import React, { useContext } from "react";
 import registration_lottie from "../../assets/registration_lottie.json";
 import Lottie from "lottie-react";
 import AuthContext from "../../context/AuthContext/AuthContext";
+import { Link } from "react-router-dom";
 const Register = () => {
   const { createUser } = useContext(AuthContext);
   const handleRegister = (e) => {
@@ -9,6 +10,13 @@ const Register = () => {
     const form = e.target;
     const email = form.email.value;
     const password = form.password.value;
+
+    const passwordRegex = /^(?=.*[a-z])(?=.*[A-Z]).{6,}$/;
+    if (!passwordRegex.test(password)) {
+      alert("Your Password is invalid to use");
+      return;
+    }
+
     createUser(email, password)
       .then((result) => {
         console.log(result.user);
@@ -47,6 +55,14 @@ const Register = () => {
                 className="input input-bordered"
                 required
               />
+            </div>
+            <div>
+              <p>
+                Old User here? If yes, do{" "}
+                <span className="text-blue-500 underline">
+                  <Link to="/login">Login</Link>
+                </span>
+              </p>
             </div>
             <div className="form-control mt-6">
               <button className="btn btn-primary">Register</button>

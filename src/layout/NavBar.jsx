@@ -1,15 +1,26 @@
-import React from "react";
-import { Link } from "react-router-dom";
+import React, { useContext } from "react";
+import { Link, NavLink } from "react-router-dom";
+import AuthContext from "../context/AuthContext/AuthContext";
 
 const NavBar = () => {
+  const { user, signOutUser } = useContext(AuthContext);
+  const handleSignOut = () => {
+    signOutUser()
+      .then(() => {
+        console.log("Signed Out");
+      })
+      .catch((error) => console.log(error));
+  };
   const links = (
     <>
       <li>
-        <a>Item 1</a>
+        <NavLink to="/">Home</NavLink>
       </li>
-
       <li>
-        <a>Item 3</a>
+        <NavLink to="/">All Artifacts</NavLink>
+      </li>
+      <li>
+        <NavLink to="/addArtifacts">Add Artifacts</NavLink>
       </li>
     </>
   );
@@ -40,18 +51,30 @@ const NavBar = () => {
             {links}
           </ul>
         </div>
-        <a className="btn btn-ghost text-xl">daisyUI</a>
+        <Link to="/">
+          <button className="btn btn-ghost text-xl">Historical Art</button>
+        </Link>
       </div>
       <div className="navbar-center hidden lg:flex">
         <ul className="menu menu-horizontal px-1">{links}</ul>
       </div>
       <div className="navbar-end gap-x-4">
-        <Link to="/login">
-          <a className="btn">Login</a>
-        </Link>
-        <Link to="/register">
-          <a className="btn">Register</a>
-        </Link>
+        {user ? (
+          <>
+            <button onClick={handleSignOut} className="btn">
+              Log Out
+            </button>
+          </>
+        ) : (
+          <>
+            <Link to="/login">
+              <button className="btn">Login</button>
+            </Link>
+            <Link to="/register">
+              <button className="btn">Register</button>
+            </Link>
+          </>
+        )}
       </div>
     </div>
   );
