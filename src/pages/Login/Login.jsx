@@ -1,6 +1,7 @@
 import React, { useContext } from "react";
 import AuthContext from "../../context/AuthContext/AuthContext";
 import { Link } from "react-router-dom";
+import SocialLogin from "../../layout/SocialLogin";
 
 const Login = () => {
   const { loginUser } = useContext(AuthContext);
@@ -55,6 +56,11 @@ const Login = () => {
             </div>
             <div className="form-control mt-6">
               <button className="btn btn-primary">Login</button>
+            </div>
+            <div className="divider">OR</div>
+            <div className="flex flex-col items-center justify-center space-y-3">
+              <p>You can log in with</p>
+              <SocialLogin></SocialLogin>
             </div>
           </form>
         </div>
