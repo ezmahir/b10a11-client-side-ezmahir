@@ -1,7 +1,6 @@
 import React, { useContext, useEffect, useState } from "react";
 import AuthContext from "../../context/AuthContext/AuthContext";
 import axios from "axios";
-import ArtifactCard from "../ArtifactCaed/ArtifactCard";
 import ArtifactLikedCard from "../ArtifactLikedCard/ArtifactLikedCard";
 
 const LikedArtifacts = () => {

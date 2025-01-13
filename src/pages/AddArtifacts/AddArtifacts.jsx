@@ -1,8 +1,10 @@
 import React, { useContext } from "react";
 import AuthContext from "../../context/AuthContext/AuthContext";
 import Swal from "sweetalert2";
+import { useNavigate } from "react-router-dom";
 
 const AddArtifacts = () => {
+  const navigate = useNavigate();
   const { user } = useContext(AuthContext);
   const handleAddArtifacts = (e) => {
     e.preventDefault();
@@ -29,7 +31,7 @@ const AddArtifacts = () => {
             showConfirmButton: false,
             timer: 1500,
           });
-          // navigate("/myPostedJobs");
+          navigate("/myArtifactsPage");
         }
       });
   };
