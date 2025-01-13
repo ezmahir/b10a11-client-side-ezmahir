@@ -7,7 +7,7 @@ const MyArtifactsCard = ({ myArtifacts }) => {
     myArtifacts;
 
   const handleDelete = (_id) => {
-    console.log(_id);
+    // console.log(_id);
     Swal.fire({
       title: "Are you sure?",
       text: "You won't be able to revert this!",
@@ -18,13 +18,21 @@ const MyArtifactsCard = ({ myArtifacts }) => {
       confirmButtonText: "Yes, delete it!",
     }).then((result) => {
       if (result.isConfirmed) {
-        //   Swal.fire({
-        //     title: "Deleted!",
-        //     text: "Your file has been deleted.",
-        //     icon: "success"
-        //   });
-
-        console.log("YESS");
+        fetch(`http://localhost:5000/artifacts/${_id}`, {
+          method: "DELETE",
+        })
+          .then((res) => res.json())
+          .then((data) => {
+            console.log(data);
+            if (data.deletedCount > 0) {
+              Swal.fire({
+                title: "Deleted!",
+                text: "Your artifact has been deleted.",
+                icon: "success",
+              });
+              window.location.reload();
+            }
+          });
       }
     });
   };
@@ -42,7 +50,9 @@ const MyArtifactsCard = ({ myArtifacts }) => {
           <Link to={`/artifacts/${_id}`}>
             <button className="btn btn-primary">View Details</button>
           </Link>
-          <button className="btn btn-accent">Update</button>
+          <Link to={`/artifactUpdate/${_id}`}>
+            <button className="btn btn-accent">Update</button>
+          </Link>
           <button onClick={() => handleDelete(_id)} className="btn btn-error">
             Delete
           </button>
