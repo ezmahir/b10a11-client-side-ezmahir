@@ -1,6 +1,38 @@
-import React from "react";
+import React, { useContext } from "react";
+import AuthContext from "../../context/AuthContext/AuthContext";
+import Swal from "sweetalert2";
 
 const AddArtifacts = () => {
+  const { user } = useContext(AuthContext);
+  const handleAddArtifacts = (e) => {
+    e.preventDefault();
+    const formData = new FormData(e.target);
+    const newArtifact = Object.fromEntries(formData.entries());
+    console.log(newArtifact);
+    newArtifact.like_count = 0;
+
+    fetch("http://localhost:5000/artifacts", {
+      method: "POST",
+      headers: {
+        "content-type": "application/json",
+      },
+      body: JSON.stringify(newArtifact),
+    })
+      .then((res) => res.json())
+      .then((data) => {
+        console.log(data);
+        if (data.insertedId) {
+          Swal.fire({
+            position: "top-end",
+            icon: "success",
+            title: "Your work has been saved",
+            showConfirmButton: false,
+            timer: 1500,
+          });
+          // navigate("/myPostedJobs");
+        }
+      });
+  };
   return (
     <div>
       <div className="text-5xl font-bold text-center">
@@ -8,7 +40,7 @@ const AddArtifacts = () => {
           <i>Post a new Artifact</i>
         </h2>
       </div>
-      <form className="card-body">
+      <form onSubmit={handleAddArtifacts} className="card-body">
         {/* Artifact Title */}
         <div className="form-control">
           <label className="label">
@@ -113,7 +145,7 @@ const AddArtifacts = () => {
             />
           </div>
           {/* Adder Email */}
-          {/* <div className="form-control">
+          <div className="form-control">
             <label className="label">
               <span className="label-text">Adder Email</span>
             </label>
@@ -126,7 +158,7 @@ const AddArtifacts = () => {
               required
               readOnly
             />
-          </div> */}
+          </div>
         </div>
 
         {/* Submit Button */}

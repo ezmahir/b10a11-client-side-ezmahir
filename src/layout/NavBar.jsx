@@ -22,6 +22,12 @@ const NavBar = () => {
       <li>
         <NavLink to="/addArtifacts">Add Artifacts</NavLink>
       </li>
+      <li>
+        <NavLink to="/likedArtifacts">Liked Artifacts</NavLink>
+      </li>
+      <li>
+        <NavLink to="/myArtifactsPage">My Artifacts</NavLink>
+      </li>
     </>
   );
   return (

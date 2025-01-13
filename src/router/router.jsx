@@ -6,6 +6,9 @@ import Register from "../pages/Register/Register";
 import ArtifactDetails from "../pages/ArtifactDetails/ArtifactDetails";
 import AddArtifacts from "../pages/AddArtifacts/AddArtifacts";
 import PrivateRoute from "../PrivateRoute";
+import ArtifactLike from "../pages/ArtifactLike/ArtifactLike";
+import LikedArtifacts from "../pages/LikedArtifacts/LikedArtifacts";
+import MyArtifactsPage from "../pages/MyArtifactsPage/MyArtifactsPage";
 
 const router = createBrowserRouter([
   {
@@ -24,6 +27,30 @@ const router = createBrowserRouter([
       {
         path: "/login",
         element: <Login></Login>,
+      },
+      {
+        path: "/artifactLike/:id",
+        element: (
+          <PrivateRoute>
+            <ArtifactLike></ArtifactLike>
+          </PrivateRoute>
+        ),
+      },
+      {
+        path: "/likedArtifacts",
+        element: (
+          <PrivateRoute>
+            <LikedArtifacts></LikedArtifacts>
+          </PrivateRoute>
+        ),
+      },
+      {
+        path: "/myArtifactsPage",
+        element: (
+          <PrivateRoute>
+            <MyArtifactsPage></MyArtifactsPage>
+          </PrivateRoute>
+        ),
       },
       {
         path: "/artifacts/:id",
