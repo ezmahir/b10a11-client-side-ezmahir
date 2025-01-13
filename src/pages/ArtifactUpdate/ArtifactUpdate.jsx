@@ -30,7 +30,7 @@ const ArtifactUpdate = () => {
     const discovered_by = form.discovered_by.value;
     const location = form.location.value;
 
-    const updateArtifact = {
+    const updatedArtifact = {
       title,
       artifact_image,
       context,
@@ -40,26 +40,26 @@ const ArtifactUpdate = () => {
       location,
       _id,
     };
-    console.log(updateArtifact);
-    // fetch(`http://localhost:5000/artifacts/${_id}`, {
-    //   method: "PUT",
-    //   headers: {
-    //     "content-type": "application/json",
-    //   },
-    //   body: JSON.stringify(updateArtifact),
-    // })
-    //   .then((res) => res.json())
-    //   .then((data) => {
-    //     console.log(data);
-    //     if (data.modifiedCount > 0) {
-    //       Swal.fire({
-    //         title: "Success",
-    //         text: "Artifact updated successfully",
-    //         icon: "success",
-    //         confirmButtonText: "Cool",
-    //       });
-    //     }
-    //   });
+    // console.log(updateArtifact);
+    fetch(`http://localhost:5000/artifacts/${_id}`, {
+      method: "PUT",
+      headers: {
+        "content-type": "application/json",
+      },
+      body: JSON.stringify(updatedArtifact),
+    })
+      .then((res) => res.json())
+      .then((data) => {
+        console.log(data);
+        if (data.modifiedCount > 0) {
+          Swal.fire({
+            title: "Success",
+            text: "Artifact updated successfully",
+            icon: "success",
+            confirmButtonText: "Cool",
+          });
+        }
+      });
   };
   return (
     <div>
