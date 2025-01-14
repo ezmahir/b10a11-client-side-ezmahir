@@ -18,7 +18,10 @@ const Login = () => {
         console.log("Logged in", result.user);
         navigate(from);
       })
-      .catch((error) => console.log(error));
+      .catch((error) => {
+        console.log(error);
+        alert("Email and Password does not match");
+      });
   };
   return (
     <div className="hero bg-base-200 min-h-screen">

@@ -16,9 +16,9 @@ const NavBar = () => {
       <li>
         <NavLink to="/">Home</NavLink>
       </li>
-      {/* <li>
-        <NavLink to="/">All Artifacts</NavLink>
-      </li> */}
+      <li>
+        <NavLink to="/allArtifacts">All Artifacts</NavLink>
+      </li>
       <li>
         <NavLink to="/addArtifacts">Add Artifacts</NavLink>
       </li>
@@ -31,7 +31,7 @@ const NavBar = () => {
     </>
   );
   return (
-    <div className="navbar bg-base-100">
+    <div className="navbar w-11/12 mx-auto mt-5 bg-slate-200 rounded-3xl p-3 mb-10">
       <div className="navbar-start">
         <div className="dropdown">
           <div tabIndex={0} role="button" className="btn btn-ghost lg:hidden">
@@ -58,14 +58,16 @@ const NavBar = () => {
           </ul>
         </div>
         <Link to="/">
-          <button className="btn btn-ghost text-xl">Historical Art</button>
+          <button className="btn btn-ghost text-2xl">
+            <i>Historical Art Tracker</i>
+          </button>
         </Link>
       </div>
       <div className="navbar-center hidden lg:flex">
         <ul className="menu menu-horizontal px-1">{links}</ul>
       </div>
       <div className="navbar-end gap-x-4">
-        {user ? (
+        {/* {user ? (
           <>
             <button onClick={handleSignOut} className="btn">
               Log Out
@@ -78,6 +80,44 @@ const NavBar = () => {
             </Link>
             <Link to="/register">
               <button className="btn">Register</button>
+            </Link>
+          </>
+        )} */}
+        {user ? (
+          <>
+            <h1 className="mr-2 text-2xl">
+              <i>Hello, {user.displayName}</i>
+            </h1>
+            <div className="dropdown dropdown-hover">
+              <img
+                className="w-10 h-10 rounded-full mr-5"
+                src={user.photoURL}
+                alt=""
+              />
+              <ul
+                tabIndex={0}
+                className="dropdown-content menu bg-base-100 rounded-box z-[1] w-52 p-2 shadow"
+              >
+                <button className="btn btn-outline" onClick={handleSignOut}>
+                  Sign Out
+                </button>
+              </ul>
+            </div>
+          </>
+        ) : (
+          <>
+            <Link to="/login">
+              <button className="btn btn-outline mr-1">Login</button>
+            </Link>
+            <Link to="/register">
+              <button className="btn btn-outline mr-2">Register</button>
+            </Link>
+            <Link to="/login">
+              <img
+                className="w-10 h-10 rounded-full"
+                src="https://img.icons8.com/?size=100&id=zj0HDoXpmTPF&format=png&color=000000"
+                alt=""
+              />
             </Link>
           </>
         )}

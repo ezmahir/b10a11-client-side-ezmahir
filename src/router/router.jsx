@@ -10,12 +10,14 @@ import ArtifactLike from "../pages/ArtifactLike/ArtifactLike";
 import LikedArtifacts from "../pages/LikedArtifacts/LikedArtifacts";
 import MyArtifactsPage from "../pages/MyArtifactsPage/MyArtifactsPage";
 import ArtifactUpdate from "../pages/ArtifactUpdate/ArtifactUpdate";
+import Errorpage from "../pages/Errorpage/Errorpage";
+import AllArtifacts from "../pages/AllArtifacts/AllArtifacts";
 
 const router = createBrowserRouter([
   {
     path: "/",
     element: <MainLayout></MainLayout>,
-    errorElement: <h2>Route not found</h2>,
+    errorElement: <Errorpage></Errorpage>,
     children: [
       {
         path: "/",
@@ -28,6 +30,10 @@ const router = createBrowserRouter([
       {
         path: "/login",
         element: <Login></Login>,
+      },
+      {
+        path: "/allArtifacts",
+        element: <AllArtifacts></AllArtifacts>,
       },
       {
         path: "/artifactLike/:id",

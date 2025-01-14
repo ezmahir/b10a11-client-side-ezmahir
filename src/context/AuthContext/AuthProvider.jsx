@@ -7,18 +7,28 @@ import {
   signInWithEmailAndPassword,
   signInWithPopup,
   signOut,
+  updateProfile,
 } from "firebase/auth";
 import auth from "../../firebase/firebase.init";
 
 const googleProvider = new GoogleAuthProvider();
 
 const AuthProvider = ({ children }) => {
-  const [user, setUser] = useState(null);
+  const [user, setUser] = useState({
+    displayName: "",
+    photoURL: "",
+  });
+
   const [loading, setLoading] = useState(true);
 
   const createUser = (email, password) => {
     setLoading(true);
     return createUserWithEmailAndPassword(auth, email, password);
+  };
+
+  const updateUserProfile = (updatedData) => {
+    setLoading(true);
+    return updateProfile(auth.currentUser, updatedData);
   };
 
   const loginUser = (email, password) => {
@@ -55,6 +65,7 @@ const AuthProvider = ({ children }) => {
     loginUser,
     signOutUser,
     signInWithGoogle,
+    updateUserProfile,
   };
 
   return (

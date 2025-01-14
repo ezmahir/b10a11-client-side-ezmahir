@@ -2,12 +2,16 @@ import React, { useContext } from "react";
 import registration_lottie from "../../assets/registration_lottie.json";
 import Lottie from "lottie-react";
 import AuthContext from "../../context/AuthContext/AuthContext";
-import { Link } from "react-router-dom";
+import { Link, useNavigate } from "react-router-dom";
+import Swal from "sweetalert2";
 const Register = () => {
-  const { createUser } = useContext(AuthContext);
+  const navigate = useNavigate();
+  const { createUser, updateUserProfile } = useContext(AuthContext);
   const handleRegister = (e) => {
     e.preventDefault();
     const form = e.target;
+    const name = form.name.value;
+    const photo = form.photo.value;
     const email = form.email.value;
     const password = form.password.value;
 
@@ -19,7 +23,34 @@ const Register = () => {
 
     createUser(email, password)
       .then((result) => {
-        console.log(result.user);
+        console.log(
+          result.user &&
+            updateUserProfile({ displayName: name, photoURL: photo })
+        );
+
+        e.target.reset();
+        const newUser = { photo, email };
+        fetch("http://localhost:5000/users", {
+          method: "POST",
+          headers: {
+            "content-type": "application/json",
+          },
+          body: JSON.stringify(newUser),
+        })
+          .then((res) => res.json())
+          .then((data) => {
+            console.log("User Created to db", data);
+            if (data.insertedId) {
+              Swal.fire({
+                title: "Done!",
+                text: "User was created!!",
+                icon: "success",
+                confirmButtonText: "Cool",
+              });
+            }
+          });
+
+        navigate("/");
       })
       .catch((error) => console.log(error));
   };
@@ -32,6 +63,30 @@ const Register = () => {
         <div className="card bg-base-100 w-full max-w-sm shrink-0 shadow-2xl">
           <form onSubmit={handleRegister} className="card-body">
             <h1 className="text-5xl font-bold">Register now!</h1>
+            <div className="form-control">
+              <label className="label">
+                <span className="label-text">Name</span>
+              </label>
+              <input
+                type="text"
+                name="name"
+                placeholder="Your Name"
+                className="input input-bordered"
+                required
+              />
+            </div>
+            <div className="form-control">
+              <label className="label">
+                <span className="label-text">PhotoURL</span>
+              </label>
+              <input
+                type="text"
+                name="photo"
+                placeholder="Your Photo"
+                className="input input-bordered"
+                required
+              />
+            </div>
             <div className="form-control">
               <label className="label">
                 <span className="label-text">Email</span>
