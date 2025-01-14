@@ -1,8 +1,10 @@
-# React + Vite
+Project Name: Historical Artifacts Tracker
+Purpose: Store and maintain data of historical artifacts added by people
+Live URL:
+Key features: User can add artifacts with pictures. They can give a like to the artifacts they like and it will be stored on the database with his/her profile
 
-This template provides a minimal setup to get React working in Vite with HMR and some ESLint rules.
+NPM Packeges used:
 
-Currently, two official plugins are available:
-
-- [@vitejs/plugin-react](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react/README.md) uses [Babel](https://babeljs.io/) for Fast Refresh
-- [@vitejs/plugin-react-swc](https://github.com/vitejs/vite-plugin-react-swc) uses [SWC](https://swc.rs/) for Fast Refresh
+1. React Helmet
+2. Axios
+3. React icons etc.

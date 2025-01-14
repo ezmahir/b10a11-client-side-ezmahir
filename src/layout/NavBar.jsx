@@ -59,7 +59,14 @@ const NavBar = () => {
         </div>
         <Link to="/">
           <button className="btn btn-ghost text-2xl">
-            <i>Historical Art Tracker</i>
+            <div className="flex gap-1">
+              <i>Historical Art Tracker</i>
+              <img
+                className="w-10 h-10"
+                src="https://img.icons8.com/?size=100&id=kB9PpVGeb9U4&format=png&color=000000"
+                alt=""
+              />
+            </div>
           </button>
         </Link>
       </div>
