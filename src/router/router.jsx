@@ -59,7 +59,9 @@ const router = createBrowserRouter([
           </PrivateRoute>
         ),
         loader: ({ params }) =>
-          fetch(`http://localhost:5000/artifacts/${params.id}`),
+          fetch(
+            `https://historical-artifacts-tracker-server-teal.vercel.app/artifacts/${params.id}`
+          ),
       },
       {
         path: "/myArtifactsPage",
@@ -77,7 +79,9 @@ const router = createBrowserRouter([
           </PrivateRoute>
         ),
         loader: ({ params }) =>
-          fetch(`http://localhost:5000/artifacts/${params.id}`),
+          fetch(
+            `https://historical-artifacts-tracker-server-teal.vercel.app/artifacts/${params.id}`
+          ),
       },
 
       {

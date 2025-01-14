@@ -14,13 +14,16 @@ const ArtifactLike = () => {
       user_email: user.email,
     };
 
-    fetch("http://localhost:5000/artifactLikes", {
-      method: "POST",
-      headers: {
-        "content-type": "application/json",
-      },
-      body: JSON.stringify(like),
-    })
+    fetch(
+      "https://historical-artifacts-tracker-server-teal.vercel.app/artifactLikes",
+      {
+        method: "POST",
+        headers: {
+          "content-type": "application/json",
+        },
+        body: JSON.stringify(like),
+      }
+    )
       .then((res) => res.json())
       .then((data) => {
         console.log(data);

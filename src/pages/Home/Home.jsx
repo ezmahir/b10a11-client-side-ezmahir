@@ -10,7 +10,9 @@ const Home = () => {
   const [artifacts, setArtifacts] = useState([]);
 
   useEffect(() => {
-    fetch("http://localhost:5000/artifactLimited")
+    fetch(
+      "https://historical-artifacts-tracker-server-teal.vercel.app/artifactLimited"
+    )
       .then((res) => res.json())
       .then((data) => setArtifacts(data));
   }, []);

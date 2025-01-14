@@ -10,7 +10,9 @@ const LikedArtifacts = () => {
 
   useEffect(() => {
     axios
-      .get(`http://localhost:5000/artifactLikes?email=${user.email}`)
+      .get(
+        `https://historical-artifacts-tracker-server-teal.vercel.app/artifactLikes?email=${user.email}`
+      )
       .then((res) => setLikes(res.data));
   }, [user.email]);
 

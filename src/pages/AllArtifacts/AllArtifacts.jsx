@@ -5,7 +5,9 @@ import { Helmet } from "react-helmet";
 const AllArtifacts = () => {
   const [artifacts, setArtifacts] = useState([]);
   useEffect(() => {
-    fetch("http://localhost:5000/artifacts")
+    fetch(
+      "https://historical-artifacts-tracker-server-teal.vercel.app/artifacts"
+    )
       .then((res) => res.json())
       .then((data) => setArtifacts(data));
   }, []);

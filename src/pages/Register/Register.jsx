@@ -30,13 +30,16 @@ const Register = () => {
 
         e.target.reset();
         const newUser = { photo, email };
-        fetch("http://localhost:5000/users", {
-          method: "POST",
-          headers: {
-            "content-type": "application/json",
-          },
-          body: JSON.stringify(newUser),
-        })
+        fetch(
+          "https://historical-artifacts-tracker-server-teal.vercel.app/users",
+          {
+            method: "POST",
+            headers: {
+              "content-type": "application/json",
+            },
+            body: JSON.stringify(newUser),
+          }
+        )
           .then((res) => res.json())
           .then((data) => {
             console.log("User Created to db", data);

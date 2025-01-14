@@ -8,7 +8,9 @@ const MyArtifactsPage = () => {
   const [artifacts, setArtifacts] = useState([]);
   const { user } = useContext(AuthContext);
   useEffect(() => {
-    fetch(`http://localhost:5000/artifacts?email=${user.email}`)
+    fetch(
+      `https://historical-artifacts-tracker-server-teal.vercel.app/artifacts?email=${user.email}`
+    )
       .then((res) => res.json())
       .then((data) => setArtifacts(data));
   }, [user.email]);

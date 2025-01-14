@@ -41,13 +41,16 @@ const ArtifactUpdate = () => {
       _id,
     };
     // console.log(updateArtifact);
-    fetch(`http://localhost:5000/artifacts/${_id}`, {
-      method: "PUT",
-      headers: {
-        "content-type": "application/json",
-      },
-      body: JSON.stringify(updatedArtifact),
-    })
+    fetch(
+      `https://historical-artifacts-tracker-server-teal.vercel.app/artifacts/${_id}`,
+      {
+        method: "PUT",
+        headers: {
+          "content-type": "application/json",
+        },
+        body: JSON.stringify(updatedArtifact),
+      }
+    )
       .then((res) => res.json())
       .then((data) => {
         console.log(data);

@@ -14,13 +14,16 @@ const AddArtifacts = () => {
     console.log(newArtifact);
     newArtifact.like_count = 0;
 
-    fetch("http://localhost:5000/artifacts", {
-      method: "POST",
-      headers: {
-        "content-type": "application/json",
-      },
-      body: JSON.stringify(newArtifact),
-    })
+    fetch(
+      "https://historical-artifacts-tracker-server-teal.vercel.app/artifacts",
+      {
+        method: "POST",
+        headers: {
+          "content-type": "application/json",
+        },
+        body: JSON.stringify(newArtifact),
+      }
+    )
       .then((res) => res.json())
       .then((data) => {
         console.log(data);
