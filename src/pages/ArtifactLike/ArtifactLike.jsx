@@ -38,12 +38,20 @@ const ArtifactLike = () => {
   };
   return (
     <div>
-      <div>
-        <p>Your Email: {user.email}</p>
+      <div className="text-center">
+        <p className="font-bold text-5xl">Your Email: {user.email}</p>
       </div>
-      <div>
-        <button onClick={handleConfirm} className="btn btn-outline">
-          Confirm!
+      <div className="my-20 flex justify-center">
+        <button
+          onClick={handleConfirm}
+          className="btn btn-wide btn-accent flex items-center justify-center"
+        >
+          Confirm to Like!{" "}
+          <img
+            className="h-8 w-8"
+            src="https://img.icons8.com/?size=100&id=wbdaZ6Dm6bFk&format=png&color=000000"
+            alt=""
+          />
         </button>
       </div>
     </div>

@@ -11,7 +11,7 @@ const AllArtifacts = () => {
   return (
     <div>
       <div className="text-center">
-        <p className="text-5xl font-bold">
+        <p className="text-5xl font-bold mb-16">
           All of the available Artifacts are here
         </p>
       </div>

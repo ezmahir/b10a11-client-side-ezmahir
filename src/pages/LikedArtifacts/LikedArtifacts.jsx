@@ -15,7 +15,15 @@ const LikedArtifacts = () => {
 
   return (
     <div>
-      <div>I liked these: {likes.length}</div>
+      <div className="text-center mb-16">
+        <p className="text-4xl font-semibold">
+          You have liked{" "}
+          <i>
+            <span className="text-6xl text-lime-400">{likes.length}</span>
+          </i>{" "}
+          artifacts till now
+        </p>
+      </div>
       <div>
         <div className="grid sm:grid-cols-1 md:grid-cols-2 lg:grid-cols-3 space-y-5 gap-10">
           {likes.map((artifactLiked) => (
