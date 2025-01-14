@@ -2,6 +2,7 @@ import React, { useContext } from "react";
 import AuthContext from "../../context/AuthContext/AuthContext";
 import Swal from "sweetalert2";
 import { useNavigate } from "react-router-dom";
+import { Helmet } from "react-helmet";
 
 const AddArtifacts = () => {
   const navigate = useNavigate();
@@ -37,6 +38,9 @@ const AddArtifacts = () => {
   };
   return (
     <div>
+      <Helmet>
+        <title>Historical Art || Add Artifact</title>
+      </Helmet>
       <div className="text-5xl font-bold text-center">
         <h2>
           <i>Post a new Artifact</i>

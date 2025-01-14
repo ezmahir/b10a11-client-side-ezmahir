@@ -4,6 +4,7 @@ import image_2 from "../../assets/images2.jpg";
 import image_3 from "../../assets/images3.jpg";
 import image_4 from "../../assets/images4.jpg";
 import ArtifactCard from "../ArtifactCaed/ArtifactCard";
+import { Helmet } from "react-helmet";
 
 const Home = () => {
   const [artifacts, setArtifacts] = useState([]);
@@ -15,6 +16,9 @@ const Home = () => {
   }, []);
   return (
     <div className="space-y-10">
+      <Helmet>
+        <title>Historical Art || Home</title>
+      </Helmet>
       <div className="carousel w-full h-96">
         <div id="slide1" className="carousel-item relative w-full">
           <img src={image_1} className="w-full" />
@@ -67,7 +71,7 @@ const Home = () => {
         <div className="text-center">
           <p className="text-5xl font-bold">Featured Artifacts</p>
         </div>
-        <div className="grid sm:grid-cols-1 md:grid-cols-2 lg:grid-cols-3 space-y-5 gap-10">
+        <div className="grid sm:grid-cols-1 md:grid-cols-2 lg:grid-cols-3 space-y-5 gap-10 w-11/12 mx-auto my-16">
           {artifacts.map((artifact) => (
             <ArtifactCard key={artifact._id} artifact={artifact}></ArtifactCard>
           ))}
